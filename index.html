@@ -131,7 +131,7 @@
         /* Landing Section */
         .landing {
             height: 100vh;
-            background-image: url('/assets/mojang/img/bg-current.png');
+            background-image: url('/assets/mojang/img/bg-grass.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -518,10 +518,10 @@
             <!-- Bottom Content -->
             <div class="bottom-content">
                 <button class="server-info" onclick="copyIP()">
-                    IP: Play.PWindows.net.eu.org
+                    IP: Play.PWindows.qzz.io
                 </button>
 
-                <a href="minecraft:?addExternalServer=PWindows|1.1.1.1" class="launch-btn">
+                <a href="minecraft:?addExternalServer=PWindows|Play.PWindows.qzz.io" class="launch-btn">
                     Launch from Minecraft Bedrock
                 </a>
             </div>
@@ -544,7 +544,7 @@
     <script>
         // Add copy IP functionality
         function copyIP() {
-            const ip = 'Play.PWindows.net.eu.org';
+            const ip = 'Play.PWindows.qzz.io';
             navigator.clipboard.writeText(ip).then(function() {
                 const button = document.querySelector('.server-info');
                 button.classList.add('copied');
