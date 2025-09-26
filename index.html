@@ -72,6 +72,7 @@
             position: relative;
         }
 
+        /* Hamburger Menu Styles */
         .hamburger {
             width: 24px;
             height: 18px;
@@ -79,16 +80,185 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.3s ease;
         }
 
-            .hamburger span {
-                width: 100%;
-                height: 3px;
-                background-color: #333;
-                border-radius: 2px;
-                transition: all 0.3s ease;
-            }
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
 
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1001;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+            overflow-y: auto;
+        }
+
+        .menu-overlay.active {
+            left: 0;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            font-family: 'Minecraft Seven v2', monospace;
+            font-size: 1.2rem;
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 206, 2, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 206, 2, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 206, 2, 0.1);
+            border-color: rgba(255, 206, 2, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Special styling for different nav items */
+        .nav-item.primary {
+            background: #ffce02;
+            color: #333;
+            border-color: #ffce02;
+        }
+
+        .nav-item.primary:hover {
+            background: #e6b800;
+            border-color: #e6b800;
+        }
+
+        .nav-item.secondary {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+
+        .nav-item.secondary:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+
+        /* Menu Footer */
+        .menu-footer {
+            margin-top: auto;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 206, 2, 0.2);
+        }
+
+        .menu-footer p {
+            font-family: 'Minecraft Seven v2', monospace;
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 206, 2, 0.1);
+            border: 2px solid rgba(255, 206, 2, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ffce02;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffce02;
+            color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 206, 2, 0.4);
+        }
+
+        /* Hide about button on mobile when menu is open */
+        .topbar .about-btn {
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active ~ .topbar .about-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Prevent body scroll when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* General Styles */
         .logo {
             width: 76px;
             height: 76px;
@@ -106,8 +276,6 @@
             object-fit: contain;
         }
 
-        /* Remove the old logo-shape CSS */
-
         .about-btn {
             padding: 12px 24px;
             background: #333;
@@ -122,11 +290,11 @@
             font-family: 'Minecraft Seven v2', monospace;
         }
 
-            .about-btn:hover {
-                background: #555;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            }
+        .about-btn:hover {
+            background: #555;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
 
         /* Landing Section */
         .landing {
@@ -192,16 +360,16 @@
             max-width: 800px;
         }
 
-            .hero-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(255, 255, 255, 0.1);
-                z-index: -1;
-            }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+        }
 
         /* Animated Heading */
         .hero-heading {
@@ -299,32 +467,32 @@
             position: relative;
         }
 
-            .server-info:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-                background: rgba(255, 255, 255, 1);
-                border-color: rgba(255, 206, 2, 0.4);
-            }
+        .server-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 206, 2, 0.4);
+        }
 
-            .server-info::after {
-                content: 'Copied!';
-                position: absolute;
-                top: -30px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(34, 197, 94, 0.9);
-                color: white;
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 0.7rem;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
+        .server-info::after {
+            content: 'Copied!';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
 
-            .server-info.copied::after {
-                opacity: 1;
-            }
+        .server-info.copied::after {
+            opacity: 1;
+        }
 
         .launch-btn {
             background: rgba(255, 255, 255, 0.95);
@@ -344,11 +512,11 @@
             font-family: 'Minecraft Seven v2', monospace;
         }
 
-            .launch-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-                background: rgba(255, 255, 255, 1);
-            }
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 1);
+        }
 
         /* Transition Section */
         .transition-section {
@@ -475,25 +643,36 @@
                 margin-top: -30px;
             }
         }
-
-        .hamburger {
-            transition: transform 0.3s ease; /* smooth rotation */
-        }
-
-        .hamburger.rotate {
-            transform: rotate(90deg);
-        }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="mobileMenu">
+        <nav class="nav-menu">
+            <a href="#home" class="nav-item" onclick="closeMenu()">🏠 Home</a>
+            <a href="#about" class="nav-item" onclick="closeMenu()">📖 About</a>
+            <a href="#community" class="nav-item" onclick="closeMenu()">👥 Community</a>
+            <a href="#server" class="nav-item secondary" onclick="closeMenu()">🎮 Join Server</a>
+            <a href="minecraft:?addExternalServer=PWindows|Play.PWindows.qzz.io" class="nav-item primary" onclick="closeMenu()">🚀 Launch Minecraft</a>
+        </nav>
+        
+        <div class="menu-footer">
+            <p>Connect with PWindows</p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Discord">💬</a>
+                <a href="#" class="social-link" title="YouTube">📺</a>
+                <a href="#" class="social-link" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Topbar -->
     <nav class="topbar">
-        <div class="hamburger">
+        <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
 
         <div class="logo">
             <img src="./assets/PWindows.png" alt="PWindows Logo" class="logo-img">
@@ -551,6 +730,47 @@
     </section>
 
     <script>
+        // Hamburger Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const body = document.body;
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Event listeners
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
         // Add copy IP functionality
         function copyIP() {
             const ip = 'Play.PWindows.qzz.io';
@@ -595,11 +815,6 @@
                     }
                 }
             });
-        });
-
-        // Hamburger menu interaction (placeholder)
-        document.querySelector('.hamburger').addEventListener('click', function () {
-            this.classList.toggle('rotate');
         });
 
         // Add some interactivity to the background
