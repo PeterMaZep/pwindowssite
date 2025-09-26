@@ -475,6 +475,14 @@
                 margin-top: -30px;
             }
         }
+
+        .hamburger {
+            transition: transform 0.3s ease; /* smooth rotation */
+        }
+
+        .hamburger.rotate {
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 <body>
@@ -485,6 +493,7 @@
             <span></span>
             <span></span>
         </div>
+
 
         <div class="logo">
             <img src="./assets/PWindows.png" alt="PWindows Logo" class="logo-img">
@@ -501,7 +510,7 @@
                 <div class="hero-heading">
                     <div class="hero-line-1">Not just a</div>
                     <div class="hero-line-2">
-                        <span class="animated-word">
+                        <div class="animated-word">
                             <div class="word-container">
                                 <div class="words-list">
                                     <span class="word">Minecraft Server</span>
@@ -510,7 +519,7 @@
                                     <span class="word">Minecraft Server</span>
                                 </div>
                             </div>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -589,8 +598,8 @@
         });
 
         // Hamburger menu interaction (placeholder)
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            this.style.transform = this.style.transform === 'rotate(90deg)' ? '' : 'rotate(90deg)';
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            this.classList.toggle('rotate');
         });
 
         // Add some interactivity to the background
