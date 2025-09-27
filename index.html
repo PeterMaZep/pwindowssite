@@ -92,15 +92,15 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 40px;
-            z-index: 1000;
+            z-index: 1003;
             border-bottom: 1px solid rgba(255, 206, 2, 0.2);
             box-shadow: 0 4px 20px rgba(255, 206, 2, 0.1);
         }
 
         /* Hamburger Menu Styles */
         .hamburger {
-            width: 24px;
-            height: 18px;
+            width: 35px;
+            height: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -109,6 +109,8 @@
             transition: all 0.3s ease;
             padding: 8px;
             border-radius: 8px;
+            transform: rotate(0deg); /* 👈 Explicit base state */
+            transition: transform 0.4s ease;
         }
 
         .hamburger:hover {
@@ -126,27 +128,22 @@
             box-shadow: 0 0 6px rgba(255, 206, 2, 0.4);
         }
 
-        /* Hamburger Animation */
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
+        /* Hamburger Animation - Simple 90 degree rotation, keep all 3 lines */
+        .hamburger.active {
+            transform: rotate(-90deg);
+        }
+
+        .hamburger.active span {
             background: linear-gradient(45deg, #ffce02, #e6b800);
+            box-shadow: 0 0 8px rgba(255, 206, 2, 0.6);
         }
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
-            background: linear-gradient(45deg, #ffce02, #e6b800);
-        }
-
-        /* Mobile Menu Overlay with glow */
+        /* Mobile Menu Overlay - Desktop sidebar, mobile full screen */
         .menu-overlay {
             position: fixed;
             top: 0;
-            left: -100%;
-            width: 100%;
+            left: -400px;
+            width: 400px;
             height: 100vh;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
@@ -472,7 +469,7 @@
             color: #ffce02;
             text-shadow: 
                 0 0 20px rgba(255, 206, 2, 0.5),
-              ddd  0 0 40px rgba(255, 206, 2, 0.3);
+                0 0 40px rgba(255, 206, 2, 0.3);
         }
 
         .animated-word {
@@ -772,6 +769,20 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         /* Interactive button enhancements */
         .launch-btn:active {
             animation: buttonPress 0.15s ease-out;
@@ -781,8 +792,8 @@
             animation: buttonPress 0.15s ease-out;
         }
 
-        .hamburger:active {
-            animation: pulse 0.2s ease-out;
+        .hamburger.active {
+            animation: pulse 0.3s ease-out;
         }
 
         /* Add subtle wobble effect for social links */
