@@ -635,22 +635,6 @@
             overflow: hidden;
         }
 
-        /* About Section with glow */
-        .about-section {
-            min-height: 100vh;
-            padding: 120px 40px 60px;
-            background-image: url('./assets/mojang/img/bg-wool-dark.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: none;
-            margin: 15px;
-            border-radius: 25px;
-            box-shadow: 
-                0 25px 80px rgba(0,0,0,0.15),
-                0 0 40px rgba(255, 206, 2, 0.1);
-        }
-
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -924,14 +908,6 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2>About PWindows</h2>
-            <p>Welcome to PWindows, where creativity meets adventure in the world of Minecraft. Our server offers a unique experience that goes beyond traditional gameplay.</p>
-            <p>Join our community and discover what makes PWindows special. From custom builds to exciting events, there's always something new to explore.</p>
-        </div>
-    </section>
-
     <script>
         // Create floating particles
         function createParticles() {
@@ -967,12 +943,6 @@
                 behavior: 'smooth',
                 block: 'start'
             });
-            
-            // Hide about section if shown
-            const aboutSection = document.querySelector('#about');
-            if (aboutSection.style.display === 'block') {
-                aboutSection.style.display = 'none';
-            }
         }
 
         // Hamburger Menu Functionality with enhanced animations
@@ -1121,16 +1091,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-
-                    // Show about section with fade in
-                    if (this.getAttribute('href') === '#about') {
-                        target.style.display = 'block';
-                        target.style.opacity = '0';
-                        setTimeout(() => {
-                            target.style.transition = 'opacity 0.5s ease';
-                            target.style.opacity = '1';
-                        }, 100);
-                    }
                 }
             });
         });
@@ -1270,11 +1230,6 @@
                 behavior: 'smooth',
                 block: 'start'
             });
-            
-            const aboutSection = document.querySelector('#about');
-            if (aboutSection.style.display === 'block') {
-                aboutSection.style.display = 'none';
-            }
         }
 
         // Enhanced copy function with shake feedback
