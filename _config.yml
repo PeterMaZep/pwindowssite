@@ -1,3 +1,8 @@
 title: PWindows
 description: Discover PWindows, not just a Minecraft server
 url: "https://pwindows.qzz.io"
+
+# Include assets in build
+include:
+  - assets/css/index.css
+  - assets/js/main.js
