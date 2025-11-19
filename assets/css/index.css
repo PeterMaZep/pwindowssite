@@ -19,16 +19,16 @@
 }
 
 .hero-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 25px;
-    padding: 30px 35px 5px 35px;
-    box-shadow:
-        0 25px 80px rgba(0,0,0,0.15),
-        0 0 40px rgba(255, 206, 2, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 206, 2, 0.3);
-    background-image: url('./assets/mojang/img/bg-wool-white.png');
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-radius: 25px;
+padding: 30px 35px 5px 35px;
+box-shadow:
+    0 25px 80px rgba(0,0,0,0.15),
+    0 0 40px rgba(255, 206, 2, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+border: 1px solid rgba(255, 206, 2, 0.3);
+background-image: url('../mojang/img/bg-wool-white.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -228,7 +228,7 @@
 /* Transition Section */
 .transition-section {
     min-height: 10vh;
-    background-image: url('./assets/mojang/img/bg-wool-white-dark.png');
+    background-image: url('../mojang/img/bg-wool-white-dark.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat-x;
@@ -268,11 +268,12 @@
 /* How to Join Section */
 .howtojoin {
     min-height: 50vh;
-    background-image: url('./assets/mojang/img/bg-wool-dark.png');
+    background-image: url('../mojang/img/bg-wool-dark.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
