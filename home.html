@@ -488,37 +488,6 @@ title: Home
         });
 
         // Add more interactive animations
-        const interactiveStyle = document.createElement('style');
-        interactiveStyle.textContent = `
-                @keyframes fadeInUp {
-                    from { opacity: 0; transform: translateY(30px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                @keyframes bounce {
-                    0%, 20%, 60%, 100% { transform: translateX(-50%) translateY(0); }
-                    40% { transform: translateX(-50%) translateY(-10px); }
-                    80% { transform: translateX(-50%) translateY(-5px); }
-                }
-                @keyframes shake {
-                    0%, 100% { transform: translateY(0); }
-                    25% { transform: translateY(-3px); }
-                    50% { transform: translateY(3px); }
-                    75% { transform: translateY(-3px); }
-                }
-                .hero-card-glow {
-                    animation: heroGlow 4s ease-in-out infinite alternate;
-                }
-                @keyframes heroGlow {
-                    from { box-shadow:
-                        0 25px 80px rgba(0,0,0,0.15),
-                        0 0 40px rgba(255, 206, 2, 0.2),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.9); }
-                    to { box-shadow:
-                        0 30px 100px rgba(0,0,0,0.2),
-                        0 0 60px rgba(255, 206, 2, 0.3),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.9); }
-                }
-            `;
         document.head.appendChild(interactiveStyle);
 
         // Add logo bounce effect
