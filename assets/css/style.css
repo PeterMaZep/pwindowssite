@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'Minecraft Ten v2';
-    src: url('../assets/mojang/fonts/Minecraft-Tenv2.ttf') format('truetype');
+    src: url('../mojang/fonts/Minecraft-Tenv2.ttf') format('truetype');
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Minecraft Seven v2';
-    src: url('../assets/mojang/fonts/Minecraft-Seven_v2.ttf') format('truetype');
+    src: url('../mojang/fonts/Minecraft-Seven_v2.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -18,7 +18,7 @@
 
 body {
     font-family: 'Minecraft Seven v2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../assets/mojang/img/bg-wool-white.png');
+    background-image: url('../mojang/img/bg-wool-white.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -333,7 +333,7 @@ body {
 /* Landing Section with subtle glow */
 .landing {
     height: 100vh;
-    background-image: url('assets/mojang/img/bg-grass.png');
+    background-image: url('../mojang/img/bg-grass.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -383,7 +383,7 @@ body {
     padding: 30px 35px 5px 35px;
     box-shadow: 0 25px 80px rgba(0,0,0,0.15), 0 0 40px rgba(255, 206, 2, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 206, 2, 0.3);
-    background-image: url('../assets/mojang/img/bg-wool-white.png');
+    background-image: url('../mojang/img/bg-wool-white.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -577,7 +577,7 @@ body {
 /* Transition Section */
 .transition-section {
     min-height: 10vh;
-    background-image: url('../assets/mojang/img/bg-wool-white-dark.png');
+    background-image: url('../mojang/img/bg-wool-white-dark.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat-x;
@@ -615,7 +615,7 @@ body {
 /* How to Join Section */
 .howtojoin {
     min-height: 50vh;
-    background-image: url('../assets/mojang/img/bg-wool-dark.png');
+    background-image: url('../mojang/img/bg-wool-dark.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
