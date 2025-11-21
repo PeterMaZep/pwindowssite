@@ -235,8 +235,7 @@ body {
 
 /* Logo with enhanced interactivity */
 .logo {
-    width: 76px;
-    height: 76px;
+    height: 27px;
     display: flex;
     align-items: center;
     justify-content: center;
