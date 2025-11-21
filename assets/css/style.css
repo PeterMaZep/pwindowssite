@@ -398,6 +398,7 @@ body {
     .hero-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 30px 100px rgba(0,0,0,0.2), 0 0 50px rgba(255, 206, 2, 0.3);
+        will-change: transform; /* Only use when actually needed */
     }
 
     .hero-card::before {
@@ -985,10 +986,23 @@ body {
 }
 
 /* Enhance existing animations */
+/* Removed will-change from these as they hurt performance */
 .particles {
-    will-change: transform;
+    /* will-change: transform; */
 }
 
 .hero-card {
-    will-change: transform, filter;
+    /* will-change: transform, filter; */
+}
+
+.hero-card:hover {
+    will-change: transform; /* Only use when actually needed */
+}
+
+/* Add GPU acceleration hint for smooth animations */
+.flip-card-inner,
+.particle,
+.hero-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
