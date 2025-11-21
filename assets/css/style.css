@@ -768,6 +768,25 @@ body {
         display: none;
     }
 
+    /* Mobile fullscreen menu overlay */
+    .menu-overlay {
+        left: -100%;
+        width: 100vw;
+        padding-top: 0;  /* Remove padding to cover entire screen */
+        box-shadow: none;
+    }
+
+    .menu-overlay.active {
+        left: 0;
+    }
+
+    .nav-menu {
+        max-width: none;
+        width: 100%;
+        padding: 100px 25px 40px;  /* Add top padding for content spacing */
+        gap: 20px;
+    }
+
     .landing {
         margin: 8px;
         margin-top: 80px;
