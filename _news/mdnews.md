@@ -8,7 +8,7 @@ date: 2025-11-21
 
 author: petermazep
 
-banner: "/assets/Mojang/img/bg-grass.png"
+banner: "/assets/mojang/img/bg-grass.png"
 
 summary: "Launching the new workspace system."
 
