@@ -840,6 +840,20 @@ body {
     .landing-content {
         padding: 40px 20px;
     }
+
+    .howtojoin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .howtojoin-heading {
+        margin-bottom: 20px;
+    }
+
+    .howtojoin-cards {
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 480px) {
