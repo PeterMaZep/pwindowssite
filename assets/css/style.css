@@ -250,7 +250,6 @@ body {
 
     .logo:hover {
         transform: translateX(-50%) scale(1.1);
-        box-shadow: 0 0 30px rgba(255, 206, 2, 0.4), 0 0 60px rgba(255, 206, 2, 0.2);
     }
 
     .logo:active {
