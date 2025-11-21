@@ -481,8 +481,8 @@ body {
 }
 
     .server-info:hover {
-        transform: translateZ(10px) scale(1.05);
-        box-shadow: 0 15px 50px rgba(0,0,0,0.2), 0 0 30px rgba(255, 206, 2, 0.4);
+        transform: translateY(-10px) scale(1.1);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(255, 206, 2, 0.4);
         background: rgba(255, 255, 255, 1);
         border-color: rgba(255, 206, 2, 0.5);
     }
@@ -507,6 +507,11 @@ body {
     .server-info.copied::after {
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
+    }
+
+    .server-info:active {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.15), 0 0 30px rgba(255, 206, 2, 0.3);
     }
 
 .launch-btn {
