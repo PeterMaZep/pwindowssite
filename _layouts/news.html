@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+{% contentfor head %}
+  <link rel="stylesheet" href="/assets/css/news.css">
+{% endcontentfor %}
+
+<article class="news-item">
+  {% if page.banner %}
+    <div class="news-banner">
+      <img src="{{ page.banner }}" alt="{{ page.title }} Banner">
+    </div>
+  {% endif %}
+
+  <h1>{{ page.title }}</h1>
+  <p class="meta">{{ page.date | date_to_string }}</p>
+
+  <div class="content">
+    {{ content }}
+  </div>
+</article>
