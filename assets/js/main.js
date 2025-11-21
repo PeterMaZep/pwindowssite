@@ -1,23 +1,3 @@
-// Create floating particles (optimized)
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    if (!particlesContainer) return;
-    
-    // Reduced from 15 to 8 for better performance
-    const particleCount = 8;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = Math.random() * 6 + 2 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        particlesContainer.appendChild(particle);
-    }
-}
-
 // Logo click functionality with bounce animation
 function goHome() {
     const logo = document.getElementById('logo');
@@ -120,9 +100,6 @@ function copyServerIP(button) {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize particles
-    createParticles();
-
     // Setup hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -199,15 +176,5 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
-    });
-
-    // Performance optimization - pause animations when tab hidden
-    document.addEventListener('visibilitychange', function () {
-        const particles = document.querySelectorAll('.particle');
-        if (document.hidden) {
-            particles.forEach(p => p.style.animationPlayState = 'paused');
-        } else {
-            particles.forEach(p => p.style.animationPlayState = 'running');
-        }
     });
 });
