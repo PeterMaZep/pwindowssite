@@ -9,14 +9,8 @@ function goHome() {
         logo.style.animation = '';
     }, 600);
 
-    window.location.href = '#home';
-    const homeSection = document.querySelector('#home');
-    if (homeSection) {
-        homeSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
+    // Navigate to index page instead of #home
+    window.location.href = '/';
 }
 
 // Hamburger Menu Functionality
