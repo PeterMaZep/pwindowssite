@@ -22,3 +22,16 @@ body {
     font-family: 'Minecraft Ten v2';
     margin-bottom: 10px;
 }
+
+.minecraft-box {
+    background-color: #fefefe;
+    border: 4px solid #555;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    color: #222;
+    box-shadow: 0 0 0 4px #aaa, 0 0 0 8px #333;
+    display: inline-block;
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 4px;
+}

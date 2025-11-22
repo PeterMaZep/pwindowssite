@@ -12,6 +12,8 @@ banner: "/assets/mojang/img/bg-grass.png"
 
 summary: "Launching the new workspace system."
 
+type: "TEST"
+
 ---
 
 Testing in Markdown!
