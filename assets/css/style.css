@@ -27,6 +27,10 @@ body {
     overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Minecraft Ten v2', 'Impact', 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
 /* Topbar Styles with enhanced glow */
 .topbar {
     position: fixed;
