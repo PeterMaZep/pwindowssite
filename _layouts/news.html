@@ -30,9 +30,11 @@ layout: default
                 {{ person.name }}
             </p>
 
+            {% if person.role %}
             <p class="author-role">
                 {{ person.role }}
             </p>
+            {% endif %}
 
             <p class="author-date">
                 <span class="label">Published</span>
