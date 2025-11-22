@@ -51,6 +51,8 @@ body {
 }
 
 .author-pfp {
+    display: block; /* default for images */
+    margin: 0 auto;
     max-width: 120px; /* sets a max width */
     height: auto; /* keeps natural aspect ratio */
     object-fit: contain; /* ensures the whole image shows */
