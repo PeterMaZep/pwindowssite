@@ -1,0 +1,19 @@
+petermazep:
+  name: PeterMaZep
+  pfp: https://pwindows.qzz.io/assets/staffpfp/PeterMaZep.png
+  role: Owner of PWindows
+  bio: The owner of PWindows, responsible for coding and managing everything.
+  socials:
+    twitter: https://twitter.com/petermazep
+    github: https://github.com/petermazep
+
+staff:
+  name: Staff
+  pfp: /assets/images/sofia.png
+  role: Writer
+  bio: Writes about Minecraft adventures and deep dives.
+  socials:
+    twitter: https://twitter.com/sofia
+    github: https://github.com/sofia
+
+

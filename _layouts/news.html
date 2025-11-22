@@ -19,9 +19,31 @@ layout: default
     </div>
 
     <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date | date_to_string }}</p>
+    <div class="news-body">
+        {% assign person = site.data.staff[page.author] %}
+        <aside class="author-info">
+            <img src="{{ person.pfp }}" alt="{{ person.name }} Profile Picture" class="author-pfp">
 
-    <div class="content">
-        {{ content }}
+            <p class="author-name">
+                <span class="label">Written by</span> 
+                {{ person.name }}
+            </p>
+
+            <p class="author-role">
+                <span class="label">Role</span> 
+                {{ person.role }}
+            </p>
+
+            <p class="author-date">
+                <span class="label">Published</span>
+                {{ page.date | date: "%B %d, %Y" }}
+            </p>
+        </aside>
+
+
+        <div class="content">
+            {{ content }}
+        </div>
     </div>
+
 </article>
