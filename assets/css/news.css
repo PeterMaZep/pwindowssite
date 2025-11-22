@@ -39,7 +39,7 @@ body {
 .news-body {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 90px;
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -51,10 +51,11 @@ body {
 }
 
 .author-pfp {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+    max-width: 120px; /* sets a max width */
+    height: auto; /* keeps natural aspect ratio */
+    object-fit: contain; /* ensures the whole image shows */
     margin-bottom: 10px;
+    display: block;
 }
 
 .author-name {

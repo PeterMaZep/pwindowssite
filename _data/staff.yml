@@ -6,14 +6,12 @@ petermazep:
   socials:
     twitter: https://twitter.com/petermazep
     github: https://github.com/petermazep
+  aboutpage: true
 
 staff:
   name: Staff
-  pfp: /assets/images/sofia.png
-  role: Writer
-  bio: Writes about Minecraft adventures and deep dives.
-  socials:
-    twitter: https://twitter.com/sofia
-    github: https://github.com/sofia
-
+  pfp: https://pwindows.qzz.io/assets/staffpfp/staff.png
+  role: Staff
+  bio: Staff
+  aboutpage: false
 
