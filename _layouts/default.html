@@ -35,12 +35,13 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    
+    {{ content_for_head }}
+
     <!-- Allow pages to add additional CSS -->
     {% if page.extra_css %}
-        {% for css_file in page.extra_css %}
-            <link rel="stylesheet" href="{{ css_file | relative_url }}">
-        {% endfor %}
+    {% for css_file in page.extra_css %}
+    <link rel="stylesheet" href="{{ css_file | relative_url }}">
+    {% endfor %}
     {% endif %}
 </head>
 <body>
