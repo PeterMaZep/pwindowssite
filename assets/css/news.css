@@ -21,8 +21,6 @@ body {
 .news-item h1 h2 h3 {
     font-family: 'Minecraft Ten v2';
     margin-bottom: 10px;
-    display: block; /* ensures it stacks */
-    width: 100%;
 }
 
 .minecraft-box {
@@ -70,10 +68,4 @@ body {
 .author-date {
     font-size: 0.9rem;
     color: #555;
-}
-
-.content {
-    line-height: 1.6;
-    display: block; /* ensures it stacks */
-    width: 100%;
 }
