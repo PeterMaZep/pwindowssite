@@ -26,16 +26,19 @@ layout: default
 
             <p class="author-name">
                 <span class="label">Written by</span> 
+            </p>
+            <p>
                 {{ person.name }}
             </p>
 
             <p class="author-role">
-                <span class="label">Role</span> 
                 {{ person.role }}
             </p>
 
             <p class="author-date">
                 <span class="label">Published</span>
+            </p>
+            <p>
                 {{ page.date | date: "%B %d, %Y" }}
             </p>
         </aside>

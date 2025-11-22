@@ -48,13 +48,11 @@ body {
 .author-info {
     flex: 0 0 200px; /* fixed width column */
     text-align: center;
-    font-family: 'mc7', 'Segoe UI', sans-serif;
 }
 
 .author-pfp {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* circular avatar */
     object-fit: cover;
     margin-bottom: 10px;
 }
