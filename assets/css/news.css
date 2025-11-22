@@ -24,6 +24,11 @@ body {
 }
 
 .minecraft-box {
+    position: absolute; /* overlay on banner */
+    bottom: 20px; /* distance from bottom */
+    left: 50%; /* center horizontally */
+    transform: translateX(-50%); /* true centering */
+
     background-color: #fefefe;
     border: 4px solid #555;
     padding: 12px 20px;
