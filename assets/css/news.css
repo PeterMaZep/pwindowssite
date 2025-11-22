@@ -69,3 +69,7 @@ body {
     font-size: 0.9rem;
     color: #555;
 }
+
+.content {
+    line-height: 1.6; /* 1.6 times the font size */
+}
