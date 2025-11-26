@@ -1018,7 +1018,6 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
-body[permalink="/articles"] h1,
-body.page-articles h1 {
-    padding-top: 2rem 0 1rem;
+.articles-title {
+    padding: 6rem 2rem;
 }
