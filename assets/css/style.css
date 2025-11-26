@@ -1021,3 +1021,9 @@ h1, h2, h3, h4, h5, h6 {
 .articles-title {
     padding: 6rem 2rem;
 }
+
+.banner {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+}
