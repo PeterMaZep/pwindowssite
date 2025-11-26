@@ -4,14 +4,6 @@ body {
   color: #000000;
 }
 
-/* Dark mode override */
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #171615;
-        color: #e0e0e0;
-    }
-}
-
 .news-banner img {
     height: 670px; /* set a fixed height */
     object-fit: cover; /* crop instead of squish */
@@ -77,4 +69,16 @@ body {
 
 .content {
     line-height: 1.3;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #171615;
+        color: #e0e0e0;
+    }
+
+    .minecraft-box {
+        background-color: #ffffff;
+        color: #1D1E1E;
+    }
 }
