@@ -605,15 +605,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 60px;
 }
 
-.howtojoin-heading::after {
-    content: "Applies to Minecraft server only";
-    display: block;
-    font-size: 0.8rem;
-    color: #cccccc;
-    margin-top: 10px;
-    font-family: 'Minecraft Seven v2', monospace;
-    opacity: 0.8;
-}
+    .howtojoin-heading::after {
+        content: "Applies to Minecraft server only";
+        display: block;
+        font-size: 0.8rem;
+        color: #cccccc;
+        margin-top: 10px;
+        font-family: 'Minecraft Seven v2', monospace;
+        opacity: 0.8;
+    }
 
 .howtojoin-cards {
     display: grid;
@@ -792,18 +792,18 @@ h1, h2, h3, h4, h5, h6 {
     .menu-overlay {
         left: -100%;
         width: 100vw;
-        padding-top: 0;  /* Remove padding to cover entire screen */
+        padding-top: 0; /* Remove padding to cover entire screen */
         box-shadow: none;
     }
 
-    .menu-overlay.active {
-        left: 0;
-    }
+        .menu-overlay.active {
+            left: 0;
+        }
 
     .nav-menu {
         max-width: none;
         width: 100%;
-        padding: 100px 25px 40px;  /* Add top padding for content spacing */
+        padding: 100px 25px 40px; /* Add top padding for content spacing */
         gap: 20px;
     }
 
@@ -1006,9 +1006,9 @@ h1, h2, h3, h4, h5, h6 {
     /* will-change: transform, filter; */
 }
 
-.hero-card:hover {
-    will-change: transform; /* Only use when actually needed */
-}
+    .hero-card:hover {
+        will-change: transform; /* Only use when actually needed */
+    }
 
 /* Add GPU acceleration hint for smooth animations */
 .flip-card-inner,
@@ -1031,8 +1031,9 @@ h1, h2, h3, h4, h5, h6 {
 .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 20rem;
+    margin-left: 30px;
+    margin-top: -4rem;
 }
 
 
