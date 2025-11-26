@@ -4,4 +4,4 @@ url: "https://pwindows.qzz.io"
 collections:
   news:
     output: true
-    permalink: /news/:name
+    permalink: /article/:name
