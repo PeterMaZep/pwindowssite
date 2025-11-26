@@ -2,6 +2,6 @@ title: PWindows
 description: Discover PWindows, not just a Minecraft server
 url: "https://pwindows.qzz.io"
 collections:
-  news:
+  articles:
     output: true
     permalink: /article/:name
