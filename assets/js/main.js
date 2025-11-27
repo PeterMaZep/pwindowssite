@@ -13,6 +13,10 @@ function goHome() {
     window.location.href = '/';
 }
 
+function newsPage() {
+    window.location.href = '/articles';
+}
+
 // Hamburger Menu Functionality
 function toggleMenu() {
     const hamburger = document.getElementById('hamburger');
