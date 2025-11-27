@@ -14,7 +14,7 @@ function goHome() {
 }
 
 function newsPage() {
-    window.location.href = '/articles/';
+    window.location.href = '/articles';
 }
 
 // Hamburger Menu Functionality
