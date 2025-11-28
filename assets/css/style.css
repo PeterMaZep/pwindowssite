@@ -862,6 +862,10 @@ h1, h2, h3, h4, h5, h6 {
     .howtojoin-cards {
         margin-top: 20px;
     }
+
+        .howtojoin-cards > .card {
+            margin: 0 auto;
+        }
 }
 
 @media (max-width: 480px) {
