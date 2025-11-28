@@ -1081,3 +1081,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5em;
     text-transform: uppercase;
 }
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 2rem;
+}
+
+#sort-select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
