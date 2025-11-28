@@ -1041,7 +1041,6 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: start; /* keeps them centered */
     gap: 2rem;
     max-width: 1200px; /* optional: cap total width */
-    margin: 0 auto; /* center the grid */
     padding: 0 2rem; /* side spacing */
 }
 
