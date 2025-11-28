@@ -1,55 +1,40 @@
----
-layout: default
-title: News
-permalink: /articles
----
-
-<h1 class="articles-title">Newest News</h1>
-
-<div class="sort-controls">
-    <label for="sort-select">Sort by:</label>
-    <select id="sort-select">
-        <option value="date-desc">Newest first</option>
-        <option value="date-asc">Oldest first</option>
-        <option value="type">Type</option>
-        <option value="title">Title</option>
-    </select>
-</div>
-
-<div class="article-grid">
-    {% for article in site.articles %}
-    <div class="article-card"
-         data-date="{{ article.date | date: '%Y-%m-%d' }}"
-         data-type="{{ article.type }}"
-         data-title="{{ article.title }}">
-        <a href="{{ article.url | relative_url }}">
-            <div class="banner" style="background-image: url('{{ article.banner | relative_url }}');"></div>
-            <div class="card-content">
-                <span class="type-label">{{ article.type }}</span>
-                <h2>{{ article.title }}</h2>
-                <p>{{ article.summary | strip_html | truncate: 120 }}</p>
-            </div>
-        </a>
+<section class="featured-news">
+    <h1 class="featured-title">Featured News</h1>
+    <!-- later you can loop featured articles here -->
+    <div class="featured-grid">
+        <!-- featured cards go here -->
     </div>
-    {% endfor %}
-</div>
+</section>
 
-<script>
-    document.getElementById('sort-select').addEventListener('change', function () {
-      const grid = document.querySelector('.article-grid');
-      const cards = Array.from(grid.children);
-      const sortBy = this.value;
+<section class="articles-section">
+    <div class="articles-header">
+        <h1 class="articles-title">Newest News</h1>
+        <div class="sort-controls">
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select">
+                <option value="date-desc">Newest first</option>
+                <option value="date-asc">Oldest first</option>
+                <option value="type">Type</option>
+                <option value="title">Title</option>
+            </select>
+        </div>
+    </div>
 
-      cards.sort((a, b) => {
-        if (sortBy === 'date-desc') {
-          return new Date(b.dataset.date) - new Date(a.dataset.date);
-        } else if (sortBy === 'date-asc') {
-          return new Date(a.dataset.date) - new Date(b.dataset.date);
-        } else {
-          return a.dataset[sortBy].localeCompare(b.dataset[sortBy]);
-        }
-      });
-
-      cards.forEach(card => grid.appendChild(card)); // reinsert in new order
-    });
-</script>
+    <div class="article-grid">
+        {% for article in site.articles %}
+        <div class="article-card"
+             data-date="{{ article.date | date: '%Y-%m-%d' }}"
+             data-type="{{ article.type }}"
+             data-title="{{ article.title }}">
+            <a href="{{ article.url | relative_url }}">
+                <div class="banner" style="background-image: url('{{ article.banner | relative_url }}');"></div>
+                <div class="card-content">
+                    <span class="type-label">{{ article.type }}</span>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.summary | strip_html | truncate: 120 }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>

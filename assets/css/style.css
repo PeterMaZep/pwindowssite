@@ -1029,6 +1029,30 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 2rem;
 }
 
+.articles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2rem 1rem;
+}
+
+.articles-title {
+    margin: 0;
+}
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#sort-select {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
 .banner {
     height: 180px;
     background-size: cover;
@@ -1087,11 +1111,4 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 1rem;
     margin: 1rem 2rem;
-}
-
-#sort-select {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
 }
