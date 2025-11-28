@@ -82,3 +82,21 @@ body {
         color: #1D1E1E;
     }
 }
+
+@media (max-width: 768px) {
+    .news-body {
+        flex-direction: column; /* stack vertically */
+        gap: 30px; /* smaller gap for mobile */
+    }
+
+    .author-info {
+        order: -1; /* move author block to the top */
+        flex: none; /* remove fixed width */
+        width: 100%; /* full width on mobile */
+        margin-bottom: 20px;
+    }
+
+    .article {
+        width: 100%; /* ensure article fills the width */
+    }
+}
