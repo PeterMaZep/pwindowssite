@@ -1040,12 +1040,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-.sort-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
 #sort-select {
     padding: 0.4rem 0.8rem;
     font-size: 1rem;
@@ -1057,6 +1051,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 180px;
     background-size: cover;
     background-position: center;
+    width: 100%;
 }
 
 .article-grid {
