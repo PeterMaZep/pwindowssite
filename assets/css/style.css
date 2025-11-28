@@ -1028,18 +1028,14 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center;
 }
 
-.articles-container {
-    max-width: 1200px;
-    margin: 0 auto; /* centers the grid */
-    padding: 0 2rem;
-    margin-left: 2rem;
-    margin-top: -4rem;
-}
-
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); /* narrower cards */
+    justify-content: center; /* keeps them centered */
     gap: 2rem;
+    max-width: 1200px; /* optional: cap total width */
+    margin: 0 auto; /* center the grid */
+    padding: 0 2rem; /* side spacing */
 }
 
 
