@@ -1019,7 +1019,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .articles-title {
-    padding: 6rem 2rem;
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .banner {
@@ -1030,8 +1033,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 220px));
-    justify-content: center; /* keeps them centered */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 270px));
+    justify-content: start; /* keeps them centered */
     gap: 2rem;
     max-width: 1200px; /* optional: cap total width */
     margin: 0 auto; /* center the grid */
