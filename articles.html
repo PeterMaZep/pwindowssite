@@ -58,3 +58,35 @@ permalink: /articles
         {% endfor %}
     </div>
 </section>
+
+<script>
+  document.getElementById('sort-select').addEventListener('change', function () {
+  const sortBy = this.value;
+  const grid = document.getElementById('articleGrid');
+  const cards = Array.from(grid.querySelectorAll('.article-card'));
+
+  let sortedCards = cards;
+
+  if (sortBy === 'date-desc') {
+    sortedCards = cards.sort((a, b) =>
+      b.dataset.date.localeCompare(a.dataset.date)
+    );
+  } else if (sortBy === 'date-asc') {
+    sortedCards = cards.sort((a, b) =>
+      a.dataset.date.localeCompare(b.dataset.date)
+    );
+  } else if (sortBy === 'type') {
+    sortedCards = cards.sort((a, b) =>
+      a.dataset.type.localeCompare(b.dataset.type)
+    );
+  } else if (sortBy === 'title') {
+    sortedCards = cards.sort((a, b) =>
+      a.dataset.title.localeCompare(b.dataset.title)
+    );
+  }
+
+  // Clear and re-append sorted cards
+  grid.innerHTML = '';
+  sortedCards.forEach(card => grid.appendChild(card));
+  });
+</script>
