@@ -1122,3 +1122,8 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fill, minmax(260px, 270px));
     gap: 2rem; /* optional spacing between cards */
 }
+
+.article-card a {
+        text-decoration: none;
+        color: inherit;
+}
