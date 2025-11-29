@@ -233,8 +233,7 @@ h1, h2, h3, h4, h5, h6 {
     .social-link:hover {
         background: linear-gradient(135deg, #ffce02, #ffd93d);
         color: #333;
-        animation: wobble 0.8s ease-in-out;
-        box-shadow: 0 8px 25px rgba(255, 206, 2, 0.4), 0 0 20px rgba(255, 206, 2, 0.5);
+        box-shadow: 0 4px 15px rgba(255, 206, 2, 0.3);
     }
 
 /* Logo with enhanced interactivity */
@@ -359,8 +358,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 30px 100px rgba(0,0,0,0.2), 0 0 50px rgba(255, 206, 2, 0.3);
-        will-change: transform; /* Only use when actually needed */
+        box-shadow: none;
     }
 
     .hero-card::before {
@@ -432,24 +430,24 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 20px rgba(255, 206, 2, 0.5), 0 0 40px rgba(255, 206, 2, 0.3);
+        text-shadow: 0 0 10px rgba(255, 206, 2, 0.5);
     }
 
     to {
-        text-shadow: 0 0 30px rgba(255, 206, 2, 0.8), 0 0 60px rgba(255, 206, 2, 0.4);
+        text-shadow: 0 0 20px rgba(255, 206, 2, 0.7);
     }
 }
 
 @keyframes perfectWordScroll {
-    0%, 30% {
+    0%, 25% {
         transform: translateY(0);
     }
 
-    33%, 63% {
+    33%, 58% {
         transform: translateY(-1.3em);
     }
 
-    66%, 96% {
+    66%, 91% {
         transform: translateY(-2.6em);
     }
 
@@ -485,8 +483,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
     .server-info:hover {
-        transform: translateY(-10px) scale(2);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(255, 206, 2, 0.4);
+        transform: translateY(-5px);
+        box-shadow: none;
         background: rgba(255, 255, 255, 1);
         border-color: rgba(255, 206, 2, 0.5);
     }
@@ -640,6 +638,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    transition: transform 0.4s ease-in-out; /* Reduced duration */
 }
 
 .flip-card-front,
@@ -890,250 +889,61 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Additional Interactive Animations - Performance Optimized */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
+/* Optimized Animations */
 
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes buttonPress {
-    0% {
-        transform: scale(1) translateY(0);
-    }
-
-    50% {
-        transform: scale(0.98) translateY(1px);
-    }
-
-    100% {
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
+/* Simplified glow animation */
+@keyframes glow {
     from {
-        transform: translateX(-50px);
-        opacity: 0;
+        text-shadow: 0 0 10px rgba(255, 206, 2, 0.5);
     }
-
     to {
-        transform: translateX(0);
-        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 206, 2, 0.7);
     }
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
+/* Optimized word scroll animation */
+@keyframes perfectWordScroll {
+    0%, 25% {
+        transform: translateY(0);
     }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
+    33%, 58% {
+        transform: translateY(-1.3em);
     }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+    66%, 91% {
+        transform: translateY(-2.6em);
     }
-
-    50% {
-        transform: scale(1.1);
-    }
-
     100% {
-        transform: scale(1);
+        transform: translateY(-3.9em);
     }
 }
 
-/* Interactive button enhancements */
-.launch-btn:active {
-    animation: buttonPress 0.15s ease-out;
+/* Removed box-shadow and reduced hover effects */
+.hero-card:hover {
+    transform: translateY(-2px);
+    box-shadow: none;
 }
 
-.about-btn:active {
-    animation: buttonPress 0.15s ease-out;
+.server-info:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
 }
 
-/* Add subtle wobble effect for social links */
-@keyframes wobble {
-    0% {
-        transform: translateY(-3px) scale(1.1) rotate(0deg);
-    }
-
-    15% {
-        transform: translateY(-3px) scale(1.1) rotate(-2deg);
-    }
-
-    30% {
-        transform: translateY(-3px) scale(1.1) rotate(2deg);
-    }
-
-    45% {
-        transform: translateY(-3px) scale(1.1) rotate(-1deg);
-    }
-
-    60% {
-        transform: translateY(-3px) scale(1.1) rotate(1deg);
-    }
-
-    100% {
-        transform: translateY(-3px) scale(1.1) rotate(0deg);
-    }
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    transition: transform 0.4s ease-in-out; /* Reduced duration */
 }
 
+/* Removed wobble animation for better performance */
 .social-link:hover {
     background: linear-gradient(135deg, #ffce02, #ffd93d);
     color: #333;
-    animation: wobble 0.8s ease-in-out;
-    box-shadow: 0 8px 25px rgba(255, 206, 2, 0.4), 0 0 20px rgba(255, 206, 2, 0.5);
+    box-shadow: 0 4px 15px rgba(255, 206, 2, 0.3);
 }
 
-/* Enhance existing animations */
-/* Removed will-change from these as they hurt performance */
-.particles {
-    /* will-change: transform; */
-}
-
-.hero-card {
-    /* will-change: transform, filter; */
-}
-
-    .hero-card:hover {
-        will-change: transform; /* Only use when actually needed */
+/* Disabled hover effects on mobile */
+@media (hover: none) {
+    .hero-card:hover, .server-info:hover, .flip-card:hover .flip-card-inner {
+        transform: none;
+        box-shadow: none;
     }
-
-/* Add GPU acceleration hint for smooth animations */
-.flip-card-inner,
-.particle,
-.hero-card {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.articles-title {
-    padding-top: 6rem;
-    padding-bottom: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-.articles-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#sort-select {
-    padding: 0.4rem 0.8rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-.banner {
-    height: 180px;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-}
-
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 270px));
-    justify-content: start; /* keeps them centered */
-    gap: 2rem;
-    max-width: 1200px; /* optional: cap total width */
-    padding: 0 2rem; /* side spacing */
-}
-
-
-.article-card {
-    background: #f9f9f9; /* light card background */
-    border: 1px solid #ddd; /* subtle border for contrast */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-}
-
-    .article-card:hover {
-        transform: translateY(-4px); /* subtle hover lift */
-    }
-
-    .article-card img.banner {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        display: block;
-    }
-
-.card-content {
-    padding: 1rem;
-    color: #333; /* dark text for white background */
-}
-
-.type-label {
-    display: inline-block;
-    background: #ffd700;
-    color: #000;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 0.3em 0.6em;
-    border-radius: 4px;
-    margin-bottom: 0.5em;
-    text-transform: uppercase;
-}
-
-.sort-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.featured-news {
-    margin-top: 6rem;
-    margin-left: 2rem;
-    margin-bottom: -4rem;
-}
-
-.featured-title {
-    margin-bottom: 1rem;
-}
-
-.sort-controls {
-    margin-top: 5rem;
-    margin-right: 2rem;
-}
-
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 270px));
-    gap: 2rem; /* optional spacing between cards */
-}
-
-.article-card a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.sort-controls select {
-    font-family: 'Minecraft Seven v2', sans-serif;
-    font-size: 1rem;
-    line-height: 1.2; /* tighter line height */
-    padding: 6px 10px; /* give vertical breathing room */
-    box-sizing: border-box;
-    height: auto;
-    vertical-align: middle;
 }
