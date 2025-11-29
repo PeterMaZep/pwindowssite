@@ -1,13 +1,14 @@
 /* Default (light mode / brand base) */
 body {
-  background: #ffffff;   /* brand white background */
-  color: #000000;
+    background: #ffffff; /* brand white background */
+    color: #000000;
 }
 
 .news-banner img {
     height: 670px; /* set a fixed height */
     object-fit: cover; /* crop instead of squish */
     width: 100%; /* keep full width */
+    margin-bottom: 1rem;
 }
 
 .news-item h1 h2 h3 {
