@@ -1033,11 +1033,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 2rem 1rem;
-}
-
-.articles-title {
-    margin: 0;
 }
 
 #sort-select {
@@ -1105,5 +1100,25 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin: 1rem 2rem;
+}
+
+.featured-news {
+    margin-top: 6rem;
+    margin-left: 2rem;
+    margin-bottom: -4rem;
+}
+
+.featured-title {
+    margin-bottom: 1rem;
+}
+
+.sort-controls {
+    margin-top: 5rem;
+    margin-right: 2rem;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 270px));
+    gap: 2rem; /* optional spacing between cards */
 }
