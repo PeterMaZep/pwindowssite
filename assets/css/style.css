@@ -1131,6 +1131,4 @@ h1, h2, h3, h4, h5, h6 {
 #sort-select {
     font-family: 'Minecraft Seven v2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem; /* optional: match your site’s text size */
-    color: inherit; /* keeps text color consistent */
-    background: inherit; /* optional: match background */
 }
