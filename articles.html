@@ -90,3 +90,10 @@ permalink: /articles
   sortedCards.forEach(card => grid.appendChild(card));
   });
 </script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const sortSelect = document.getElementById('sort-select');
+        sortSelect.value = 'date-desc'; // set default to newest first
+        sortSelect.dispatchEvent(new Event('change')); // trigger sorting once
+    });
+</script>
