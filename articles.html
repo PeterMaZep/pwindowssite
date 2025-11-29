@@ -40,7 +40,7 @@ permalink: /articles
         </div>
     </div>
 
-    <div class="article-grid">
+    <div class="article-grid" id="articleGrid">
         {% for article in site.articles %}
         <div class="article-card"
              data-date="{{ article.date | date: '%Y-%m-%d' }}"
