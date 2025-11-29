@@ -14,6 +14,8 @@ summary: "The website finally works!"
 
 type: "NEWS"
 
+featured: true
+
 ---
 
 PWindows' website is working! This is one of the biggest milestones for the project, as it allows us to share information, updates, and resources with our community effectively. We are excited to have a platform where users can learn more about PWindows, download the latest versions, and stay informed about upcoming features and events.
