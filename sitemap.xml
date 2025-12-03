@@ -6,9 +6,10 @@ layout: none
   <url>
     <loc>https://www.pwindows.qzz.io/</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
   </url>
   {% for page in site.pages %}
-    {% if page.sitemap != false and page.url != "/" and page.url != "/sitemap.xml" and page.url contains ".css" == false and page.url contains ".js" == false and page.url contains ".png" == false and page.url contains ".jpg" == false %}
+    {% if page.url != "/" and page.url != "/sitemap.xml" and page.url contains ".css" == false and page.url contains ".js" == false and page.url contains ".png" == false and page.url contains ".jpg" == false %}
       <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
         <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
