@@ -11,7 +11,7 @@ layout: none
   </url>
   {% for page in site.pages %}
     {% if page.url != "/" and page.url != "/sitemap.xml" %}
-      {% unless page.url contains ".css" or page.url contains ".js" or page.url contains ".png" or page.url contains ".jpg" %}
+      {% unless page.url contains ".css" or page.url contains ".js" or page.url contains ".png" or page.url contains ".jpg"  or page.url contains "scm" %}
         <url>
           <loc>{{ site.url }}{{ page.url }}</loc>
           <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
