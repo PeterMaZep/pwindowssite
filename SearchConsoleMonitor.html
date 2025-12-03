@@ -14,18 +14,39 @@ permalink: /scm
   <div id="output"></div>
 
   <script>
-  function initClient() {
-    gapi.load('client:auth2', () => {
-      gapi.auth2.init({
-        client_id: '830015351192-38tmspassocrp65dok2mo83d54g9gtav.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/webmasters.readonly'
-      }).then(() => {
-        gapi.auth2.getAuthInstance().signIn().then(() => {
-          gapi.client.load('searchconsole', 'v1').then(fetchSitemaps);
-        });
+    function initClient() {
+      gapi.load('client:auth2', () => {
+        gapi.auth2.init({
+          client_id: '830015351192-38tmspassocrp65dok2mo83d54g9gtav.apps.googleusercontent.com',
+          scope: 'https://www.googleapis.com/auth/webmasters.readonly'
+        }).then(() => {
+          gapi.auth2.getAuthInstance().signIn().then(() => {
+            gapi.client.load('searchconsole', 'v1').then(fetchSitemaps)
+              .catch(err => showError('API load error', err));
+          }).catch(err => showError('Sign-in error', err));
+        }).catch(err => showError('Init error', err));
       });
-    });
-  }
-</script>
+    }
+
+    function fetchSitemaps() {
+      gapi.client.searchconsole.sitemaps.list({
+        siteUrl: 'https://pwindows.qzz.io/'
+      }).then(response => {
+        if (response.result.sitemap && response.result.sitemap.length > 0) {
+          const data = response.result.sitemap[0].contents[0];
+          document.getElementById('output').innerText =
+            `Submitted: ${data.submitted}, Indexed: ${data.indexed}`;
+        } else {
+          document.getElementById('output').innerText = 'No sitemap data found.';
+        }
+      }).catch(err => showError('Fetch error', err));
+    }
+
+    function showError(label, err) {
+      console.error(label, err);
+      document.getElementById('output').innerText =
+        `${label}: ${JSON.stringify(err, null, 2)}`;
+    }
+  </script>
 </body>
 </html>
