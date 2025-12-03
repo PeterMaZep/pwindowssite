@@ -10,11 +10,13 @@ layout: none
     <priority>1.0</priority>
   </url>
   {% for page in site.pages %}
-    {% if page.url != "/" and page.url != "/sitemap.xml" and not page.url contains ".css" %}
-      <url>
-        <loc>{{ site.url }}{{ page.url }}</loc>
-        <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
-      </url>
+    {% if page.url != "/" and page.url != "/sitemap.xml" %}
+      {% unless page.url contains ".css" or page.url contains ".js" or page.url contains ".png" or page.url contains ".jpg" %}
+        <url>
+          <loc>{{ site.url }}{{ page.url }}</loc>
+          <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
+        </url>
+      {% endunless %}
     {% endif %}
   {% endfor %}
   {% for article in site.articles %}
