@@ -3,11 +3,17 @@ layout: none
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for page in site.pages %}
   <url>
-    <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <loc>https://www.pwindows.qzz.io/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
   </url>
+  {% for page in site.pages %}
+    {% if page.sitemap != false and page.url != "/" and page.url != "/sitemap.xml" and page.url contains ".css" == false and page.url contains ".js" == false and page.url contains ".png" == false and page.url contains ".jpg" == false %}
+      <url>
+        <loc>{{ site.url }}{{ page.url }}</loc>
+        <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+      </url>
+    {% endif %}
   {% endfor %}
   {% for article in site.articles %}
     <url>
