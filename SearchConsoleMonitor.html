@@ -5,7 +5,6 @@ permalink: /scm
 <!DOCTYPE html>
 <html>
 <head>
-  <div class="spacing-start"></div>
   <title>Indexed Pages Monitor</title>
   <!-- Load Google APIs client -->
   <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
@@ -14,7 +13,7 @@ permalink: /scm
 </head>
 <body>
   <h1>Indexed Pages Count</h1>
-  <button onclick="authorizeAndFetch()">Authorize & Fetch</button>
+  <button id="authBtn" onclick="authorizeAndFetch()" disabled>Authorize & Fetch</button>
   <div id="output"></div>
 
   <script>
@@ -27,10 +26,16 @@ permalink: /scm
     }
 
     async function initializeGapiClient() {
-      await gapi.client.init({
-        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
-      });
-      gapiInited = true;
+      try {
+        await gapi.client.init({
+          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
+        });
+        gapiInited = true;
+        // Enable the button once initialization is complete
+        document.getElementById('authBtn').disabled = false;
+      } catch (err) {
+        showError('Init error', err);
+      }
     }
 
     // Load GIS client
