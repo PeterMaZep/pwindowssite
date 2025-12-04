@@ -7,6 +7,25 @@ permalink: /scm
 <head>
   <title>Indexed Pages Monitor</title>
   <!-- Load Google APIs client -->
+
+  <script>
+  function gapiLoaded() {
+    gapi.load('client', initializeGapiClient);
+  }
+  async function initializeGapiClient() {
+      try {
+        await gapi.client.init({
+          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
+        });
+        gapiInited = true;
+        // Enable the button once initialization is complete
+        document.getElementById('authBtn').disabled = false;
+      } catch (err) {
+        showError('Init error', err);
+      }
+    }
+</script>
+
   <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
   <!-- Load Google Identity Services -->
   <script src="https://accounts.google.com/gsi/client" async defer onload="gisLoaded()"></script>
@@ -21,22 +40,6 @@ permalink: /scm
     let gapiInited = false;
 
     // Load GAPI client
-    function gapiLoaded() {
-      gapi.load('client', initializeGapiClient);
-    }
-
-    async function initializeGapiClient() {
-      try {
-        await gapi.client.init({
-          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
-        });
-        gapiInited = true;
-        // Enable the button once initialization is complete
-        document.getElementById('authBtn').disabled = false;
-      } catch (err) {
-        showError('Init error', err);
-      }
-    }
 
     // Load GIS client
     function gisLoaded() {
