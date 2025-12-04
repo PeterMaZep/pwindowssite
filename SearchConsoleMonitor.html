@@ -6,34 +6,27 @@ permalink: /scm
 <html>
 <head>
   <title>Indexed Pages Monitor</title>
+  <!-- Load Google APIs base client (needed for gapi.client.setToken if you want) -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- Load Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer onload="gisLoaded()"></script>
+</head>
+<body>
+  <h1>Indexed Pages Count</h1>
+  <button id="authBtn" onclick="authorizeAndFetch()">Authorize & Fetch</button>
+  <pre id="output"></pre>
+
   <script>
     let tokenClient;
-    let gapiReady = false;
 
-    // Called when api.js finishes loading
-    function gapiLoaded() {
-      // Load the base client, then the Webmasters (Search Console) API
-      gapi.load('client', async () => {
-        try {
-          await gapi.client.load('webmasters', 'v3'); // no discovery init
-          gapiReady = true;
-          document.getElementById('authBtn').disabled = false;
-        } catch (err) {
-          showError('Init error', err);
-        }
-      });
-    }
-
-    // Called when GIS finishes loading
+    // Initialize GIS client
     function gisLoaded() {
       tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: '830015351192-38tmspassocrp65dok2mo83d54g9gtav.apps.googleusercontent.com',
         scope: 'https://www.googleapis.com/auth/webmasters.readonly',
         callback: (tokenResponse) => {
           if (tokenResponse && tokenResponse.access_token) {
-            // Attach token to gapi client so calls are authorized
-            gapi.client.setToken({ access_token: tokenResponse.access_token });
-            fetchSitemaps();
+            fetchSitemaps(tokenResponse.access_token);
           } else {
             showError('Token error', tokenResponse);
           }
@@ -41,54 +34,46 @@ permalink: /scm
       });
     }
 
+    // Trigger authorization
     function authorizeAndFetch() {
-      if (!gapiReady) {
-        showError('Init error', { message: 'GAPI not initialized yet' });
-        return;
-      }
       tokenClient.requestAccessToken();
     }
 
-    async function fetchSitemaps() {
+    // Fetch sitemap data directly via REST API
+    async function fetchSitemaps(accessToken) {
       try {
-        const response = await gapi.client.webmasters.sitemaps.list({
-          siteUrl: 'https://www.pwindows.qzz.io/',
-        });
+        const siteUrl = encodeURIComponent('https://www.pwindows.qzz.io/');
+        const resp = await fetch(
+          `https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/sitemaps`,
+          {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          }
+        );
+        const data = await resp.json();
 
-        const sitemaps = response.result?.sitemap || [];
-        if (sitemaps.length === 0) {
+        if (data.sitemap && data.sitemap.length > 0) {
+          let output = '';
+          data.sitemap.forEach((smap) => {
+            const contents = smap.contents?.[0];
+            const submitted = contents?.submitted ?? 'n/a';
+            const indexed = contents?.indexed ?? 'n/a';
+            output += `Sitemap: ${smap.path}\nSubmitted: ${submitted}, Indexed: ${indexed}\n\n`;
+          });
+          document.getElementById('output').innerText = output.trim();
+        } else {
           document.getElementById('output').innerText = 'No sitemap data found.';
-          return;
         }
-
-        let output = '';
-        for (const smap of sitemaps) {
-          const data = smap.contents?.[0];
-          const submitted = data?.submitted ?? 'n/a';
-          const indexed = data?.indexed ?? 'n/a';
-          output += `Sitemap: ${smap.path}\nSubmitted: ${submitted}, Indexed: ${indexed}\n\n`;
-        }
-        document.getElementById('output').innerText = output.trim();
       } catch (err) {
         showError('Fetch error', err);
       }
     }
 
+    // Error handler
     function showError(label, err) {
       console.error(label, err);
       document.getElementById('output').innerText =
         `${label}: ${JSON.stringify(err, null, 2)}`;
     }
   </script>
-
-  <!-- Load Google APIs client -->
-  <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-  <!-- Load Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer onload="gisLoaded()"></script>
-</head>
-<body>
-  <h1>Indexed Pages Count</h1>
-  <button id="authBtn" onclick="authorizeAndFetch()" disabled>Authorize & Fetch</button>
-  <pre id="output"></pre>
 </body>
 </html>
