@@ -13,6 +13,10 @@ function goHome() {
     window.location.href = '/';
 }
 
+function aboutPage() {
+    window.location.href = '/about';
+}
+
 function newsPage() {
     window.location.href = '/articles';
 }
