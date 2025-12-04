@@ -6,22 +6,20 @@ permalink: /scm
 <html>
 <head>
   <title>Indexed Pages Monitor</title>
-  <!-- Define gapiLoaded before loading api.js -->
   <script>
     let tokenClient;
     let gapiInited = false;
 
+    // Called when api.js finishes loading
     function gapiLoaded() {
       gapi.load('client', initializeGapiClient);
     }
 
     async function initializeGapiClient() {
       try {
-        await gapi.client.init({
-          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
-        });
-        // Explicitly load the Search Console API
-        await gapi.client.load('searchconsole', 'v1');
+        await gapi.client.init({});
+        // Explicitly load the Webmasters API (Search Console)
+        await gapi.client.load('webmasters', 'v3');
         gapiInited = true;
         document.getElementById('authBtn').disabled = false;
       } catch (err) {
@@ -53,11 +51,10 @@ permalink: /scm
 
     async function fetchSitemaps() {
       try {
-        const response = await gapi.client.searchconsole.sitemaps.list({
+        const response = await gapi.client.webmasters.sitemaps.list({
           siteUrl: 'https://www.pwindows.qzz.io/',
         });
         if (response.result.sitemap && response.result.sitemap.length > 0) {
-          // Loop through all sitemaps instead of just the first
           let output = '';
           response.result.sitemap.forEach((smap) => {
             if (smap.contents && smap.contents.length > 0) {
