@@ -8,31 +8,31 @@ permalink: /scm
   <title>Indexed Pages Monitor</title>
   <script>
     let tokenClient;
-    let gapiInited = false;
+    let gapiReady = false;
 
     // Called when api.js finishes loading
     function gapiLoaded() {
-      gapi.load('client', initializeGapiClient);
+      // Load the base client, then the Webmasters (Search Console) API
+      gapi.load('client', async () => {
+        try {
+          await gapi.client.load('webmasters', 'v3'); // no discovery init
+          gapiReady = true;
+          document.getElementById('authBtn').disabled = false;
+        } catch (err) {
+          showError('Init error', err);
+        }
+      });
     }
 
-    async function initializeGapiClient() {
-      try {
-        await gapi.client.init({});
-        // Explicitly load the Webmasters API (Search Console)
-        await gapi.client.load('webmasters', 'v3');
-        gapiInited = true;
-        document.getElementById('authBtn').disabled = false;
-      } catch (err) {
-        showError('Init error', err);
-      }
-    }
-
+    // Called when GIS finishes loading
     function gisLoaded() {
       tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: '830015351192-38tmspassocrp65dok2mo83d54g9gtav.apps.googleusercontent.com',
         scope: 'https://www.googleapis.com/auth/webmasters.readonly',
         callback: (tokenResponse) => {
-          if (tokenResponse.access_token) {
+          if (tokenResponse && tokenResponse.access_token) {
+            // Attach token to gapi client so calls are authorized
+            gapi.client.setToken({ access_token: tokenResponse.access_token });
             fetchSitemaps();
           } else {
             showError('Token error', tokenResponse);
@@ -42,8 +42,8 @@ permalink: /scm
     }
 
     function authorizeAndFetch() {
-      if (!gapiInited) {
-        showError('Init error', {message: 'GAPI not initialized yet'});
+      if (!gapiReady) {
+        showError('Init error', { message: 'GAPI not initialized yet' });
         return;
       }
       tokenClient.requestAccessToken();
@@ -54,18 +54,21 @@ permalink: /scm
         const response = await gapi.client.webmasters.sitemaps.list({
           siteUrl: 'https://www.pwindows.qzz.io/',
         });
-        if (response.result.sitemap && response.result.sitemap.length > 0) {
-          let output = '';
-          response.result.sitemap.forEach((smap) => {
-            if (smap.contents && smap.contents.length > 0) {
-              const data = smap.contents[0];
-              output += `Sitemap: ${smap.path}\nSubmitted: ${data.submitted}, Indexed: ${data.indexed}\n\n`;
-            }
-          });
-          document.getElementById('output').innerText = output.trim();
-        } else {
+
+        const sitemaps = response.result?.sitemap || [];
+        if (sitemaps.length === 0) {
           document.getElementById('output').innerText = 'No sitemap data found.';
+          return;
         }
+
+        let output = '';
+        for (const smap of sitemaps) {
+          const data = smap.contents?.[0];
+          const submitted = data?.submitted ?? 'n/a';
+          const indexed = data?.indexed ?? 'n/a';
+          output += `Sitemap: ${smap.path}\nSubmitted: ${submitted}, Indexed: ${indexed}\n\n`;
+        }
+        document.getElementById('output').innerText = output.trim();
       } catch (err) {
         showError('Fetch error', err);
       }
