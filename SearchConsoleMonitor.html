@@ -6,42 +6,29 @@ permalink: /scm
 <html>
 <head>
   <title>Indexed Pages Monitor</title>
-  <!-- Load Google APIs client -->
-
+  <!-- Define gapiLoaded before loading api.js -->
   <script>
-  function gapiLoaded() {
-    gapi.load('client', initializeGapiClient);
-  }
-  async function initializeGapiClient() {
+    let tokenClient;
+    let gapiInited = false;
+
+    function gapiLoaded() {
+      gapi.load('client', initializeGapiClient);
+    }
+
+    async function initializeGapiClient() {
       try {
         await gapi.client.init({
           discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/searchconsole/v1/rest'],
         });
+        // Explicitly load the Search Console API
+        await gapi.client.load('searchconsole', 'v1');
         gapiInited = true;
-        // Enable the button once initialization is complete
         document.getElementById('authBtn').disabled = false;
       } catch (err) {
         showError('Init error', err);
       }
     }
-</script>
 
-  <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-  <!-- Load Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer onload="gisLoaded()"></script>
-</head>
-<body>
-  <h1>Indexed Pages Count</h1>
-  <button id="authBtn" onclick="authorizeAndFetch()" disabled>Authorize & Fetch</button>
-  <div id="output"></div>
-
-  <script>
-    let tokenClient;
-    let gapiInited = false;
-
-    // Load GAPI client
-
-    // Load GIS client
     function gisLoaded() {
       tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: '830015351192-38tmspassocrp65dok2mo83d54g9gtav.apps.googleusercontent.com',
@@ -56,7 +43,6 @@ permalink: /scm
       });
     }
 
-    // Trigger authorization
     function authorizeAndFetch() {
       if (!gapiInited) {
         showError('Init error', {message: 'GAPI not initialized yet'});
@@ -65,16 +51,21 @@ permalink: /scm
       tokenClient.requestAccessToken();
     }
 
-    // Fetch sitemap data
     async function fetchSitemaps() {
       try {
         const response = await gapi.client.searchconsole.sitemaps.list({
           siteUrl: 'https://www.pwindows.qzz.io/',
         });
         if (response.result.sitemap && response.result.sitemap.length > 0) {
-          const data = response.result.sitemap[0].contents[0];
-          document.getElementById('output').innerText =
-            `Submitted: ${data.submitted}, Indexed: ${data.indexed}`;
+          // Loop through all sitemaps instead of just the first
+          let output = '';
+          response.result.sitemap.forEach((smap) => {
+            if (smap.contents && smap.contents.length > 0) {
+              const data = smap.contents[0];
+              output += `Sitemap: ${smap.path}\nSubmitted: ${data.submitted}, Indexed: ${data.indexed}\n\n`;
+            }
+          });
+          document.getElementById('output').innerText = output.trim();
         } else {
           document.getElementById('output').innerText = 'No sitemap data found.';
         }
@@ -83,12 +74,21 @@ permalink: /scm
       }
     }
 
-    // Error handler
     function showError(label, err) {
       console.error(label, err);
       document.getElementById('output').innerText =
         `${label}: ${JSON.stringify(err, null, 2)}`;
     }
   </script>
+
+  <!-- Load Google APIs client -->
+  <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <!-- Load Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer onload="gisLoaded()"></script>
+</head>
+<body>
+  <h1>Indexed Pages Count</h1>
+  <button id="authBtn" onclick="authorizeAndFetch()" disabled>Authorize & Fetch</button>
+  <pre id="output"></pre>
 </body>
 </html>
